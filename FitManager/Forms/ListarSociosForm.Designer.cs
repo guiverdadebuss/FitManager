@@ -37,10 +37,11 @@ namespace FitManager.Forms
             // 
             // dgvSocios
             // 
-            dgvSocios.Location = new Point(269, 149);
+            dgvSocios.Location = new Point(161, 113);
             dgvSocios.Name = "dgvSocios";
             dgvSocios.Size = new Size(240, 150);
             dgvSocios.TabIndex = 3;
+            dgvSocios.CellContentClick += dgvSocios_CellContentClick;
             // 
             // txtPesquisa
             // 
@@ -73,6 +74,11 @@ namespace FitManager.Forms
             ((System.ComponentModel.ISupportInitialize)dgvSocios).EndInit();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void dgvSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void labelPesquisarSocio_Click(object sender, EventArgs e)
