@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "MainForm";
+            lblUsuarioLogado = new Label();
+            SuspendLayout();
+            // 
+            // lblUsuarioLogado
+            // 
+            lblUsuarioLogado.AutoSize = true;
+            lblUsuarioLogado.Location = new Point(122, 132);
+            lblUsuarioLogado.Name = "lblUsuarioLogado";
+            lblUsuarioLogado.Size = new Size(0, 20);
+            lblUsuarioLogado.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(lblUsuarioLogado);
+            Name = "MainForm";
+            Text = "MainForm";
+            Load += MainForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblUsuarioLogado;
     }
 }

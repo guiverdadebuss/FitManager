@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitManager.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +18,13 @@ namespace FitManager.Forms
             InitializeComponent();
         }
 
-        private void AtualizarDashboard()
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            lblTotalSocios.Text = repoSocio.ContarAtivos().ToString();
-            lblEntradasHoje.Text = repoEntrada.ContarEntradasDia().ToString();
+            if (Sessao.EstaLogado)
+            {
+                this.Text = "Sistema de Gestão - Logado como: " + Sessao.UsuarioLogado.Usuario;
+                lblUsuarioLogado.Text = "Bem-vindo, " + Sessao.UsuarioLogado.Usuario;
+            }
         }
     }
 }
