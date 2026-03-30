@@ -16,5 +16,10 @@ namespace FitManager.Forms
         {
             InitializeComponent();
         }
+
+        private void SocioForm_Load(object sender, EventArgs e)
+        {
+        
+        }
     }
 }
