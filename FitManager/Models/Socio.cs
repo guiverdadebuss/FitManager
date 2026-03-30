@@ -8,7 +8,6 @@ namespace FitManager.Models
 {
     public class Socio
     {
-        
         public string Nome { get; set; }
         public string Nif { get; set; }
         public string Contacto { get; set; }
