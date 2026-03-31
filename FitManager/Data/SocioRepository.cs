@@ -178,6 +178,47 @@ namespace FitManager.Data
             return lista;
         }
 
+        public static List<Socio> CarregarTodosSocios()
+        {
+            List<Socio> socios = new List<Socio>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+                {
+                    if (sqlConnection.State != ConnectionState.Open)
+                        sqlConnection.Open();
+
+                    string sql = "SELECT * FROM Socio";
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Socio s = new Socio
+                            {
+                                Id = (int)reader["Id"],
+                                Nome = reader["Nome"].ToString(),
+                                Nif = reader["Nif"].ToString(),
+                                Telefone = reader["Telefone"].ToString(),
+                                DataInscricao = (DateTime)reader["DataInscricao"],
+                                PlanoId = (int)reader["PlanoId"],
+                                EstadoAtivo = (bool)reader["EstadoAtivo"]
+                            };
+                            socios.Add(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar sócios: " + ex.Message,
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return socios;
+        }
     }
 }
 
