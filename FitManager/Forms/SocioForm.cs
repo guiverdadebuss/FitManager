@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FitManager.Data;
+using FitManager.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +19,14 @@ namespace FitManager.Forms
             InitializeComponent();
         }
 
-        private void SocioForm_Load(object sender, EventArgs e)
+        private void btnDetalhes_Click(object sender, EventArgs e)
         {
-        
+            ListarSocio det = new ListarSocio();
+            det.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            det.ShowDialog();
+            this.Show();
         }
     }
 }
+

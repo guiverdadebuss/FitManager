@@ -10,10 +10,6 @@ namespace FitManager.Services
 {
     public class SocioService
     {
-        public void CriarSocio()
-        {
-            if (string.IsNullOrWhiteSpace())
-                throw new Exception("O nome do sócio é obrigatório");
-        }
+        
     }
 }
