@@ -13,7 +13,6 @@ namespace FitManager.Models
         public decimal PrecoMensal { get; set; }
         public string Descricao { get; set; }
 
-        // Facilita a exibição em ComboBoxes no Windows Forms
         public override string ToString()
         {
             return Nome;
