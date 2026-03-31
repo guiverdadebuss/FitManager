@@ -22,5 +22,20 @@ namespace FitManager.Services
 
             return sucesso;
         }
+
+        public bool EditarSocio(Socio socioParaAtualizar)
+        {
+            if (socioParaAtualizar.Id <= 0)
+            {
+                throw new Exception("ID inválido para atualização");
+            }
+
+            if (string.IsNullOrWhiteSpace(socioParaAtualizar.Nome))
+            {
+                throw new Exception("O nome não pode ficar vazio");
+            }
+
+            return SocioRepository.AtualizarSocio(socioParaAtualizar);
+        }
     }
 }
