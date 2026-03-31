@@ -13,21 +13,6 @@ namespace FitManager.Data
 {
     public class SocioRepository
     {
-        //public void Adicionar(Socio socio)
-        //{
-        //    using (var conn = DatabaseConnection.GetConnection())
-        //    {
-        //        string sql = "INSERT INTO Socio (Nome, Nif, PlanoId, EstadoAtivo) VALUES (@nome, @nif, @plano, @estado)";
-        //        // Aqui você usaria SqlCommand com Parameters
-        //    }
-        //}
-
-        //public Socio BuscarPorNif(string nif)
-        //{
-        //    // Retorna um objeto Socio preenchido do banco
-        //}
-
-
 
         public static int CarregarTotalSociosAtivos()
         {
@@ -89,8 +74,7 @@ namespace FitManager.Data
                 {
                     sqlConnection.Open();
 
-                    string sql = @"SELECT Id, Nome, Nif, EstadoAtivo 
-                           FROM Socio 
+                    string sql = @"SELECT * FROM Socio 
                            WHERE Nif = @termo 
                            OR Id = TRY_CAST(@termo AS INT)";
 
@@ -107,7 +91,10 @@ namespace FitManager.Data
                                     Id = (int)reader["Id"],
                                     Nome = reader["Nome"].ToString(),
                                     Nif = reader["Nif"].ToString(),
-                                    EstadoAtivo = Convert.ToBoolean(reader["EstadoAtivo"])
+                                    Telefone = reader["Telefone"]?.ToString(), // Adicionado
+                                    EstadoAtivo = Convert.ToBoolean(reader["EstadoAtivo"]),
+                                    PlanoId = (int)reader["PlanoId"], // Adicionado (importante para a ComboBox)
+                                    DataInscricao = (DateTime)reader["DataInscricao"] // Adicionado
                                 };
                             }
                         }
@@ -193,3 +180,17 @@ namespace FitManager.Data
 
     }
 }
+
+
+//public static bool RegistarEntrada(int socioId)
+//{
+//    try
+//    {
+//        using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+//        {
+//            sqlConnection.Open();
+//            // ... codigo ...
+//        }
+//    }
+//    catch (Exception ex) { throw ex; }
+//}
