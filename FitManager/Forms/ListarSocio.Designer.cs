@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnBusca = new Button();
             txtBusca = new TextBox();
             lblPlano = new Label();
             lblDataInsc = new Label();
@@ -42,10 +43,9 @@
             label2 = new Label();
             lbl9 = new Label();
             lblId = new Label();
-            dataGridView1 = new DataGridView();
-            btnBusca = new Button();
+            dgvSocios = new DataGridView();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSocios).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -70,6 +70,16 @@
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalhes";
+            // 
+            // btnBusca
+            // 
+            btnBusca.Location = new Point(295, 47);
+            btnBusca.Name = "btnBusca";
+            btnBusca.Size = new Size(130, 33);
+            btnBusca.TabIndex = 13;
+            btnBusca.Text = "Procurar";
+            btnBusca.UseVisualStyleBackColor = true;
+            btnBusca.Click += btnBusca_Click;
             // 
             // txtBusca
             // 
@@ -187,37 +197,28 @@
             lblId.TabIndex = 0;
             lblId.Text = "---";
             // 
-            // dataGridView1
+            // dgvSocios
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 320);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(900, 253);
-            dataGridView1.TabIndex = 6;
-            // 
-            // btnBusca
-            // 
-            btnBusca.Location = new Point(295, 47);
-            btnBusca.Name = "btnBusca";
-            btnBusca.Size = new Size(130, 33);
-            btnBusca.TabIndex = 13;
-            btnBusca.Text = "Procurar";
-            btnBusca.UseVisualStyleBackColor = true;
-            btnBusca.Click += btnBusca_Click;
+            dgvSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSocios.Location = new Point(12, 320);
+            dgvSocios.Name = "dgvSocios";
+            dgvSocios.RowHeadersWidth = 51;
+            dgvSocios.Size = new Size(900, 253);
+            dgvSocios.TabIndex = 6;
+            dgvSocios.CellContentClick += dgvSocios_CellContentClick;
             // 
             // ListarSocio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(924, 585);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvSocios);
             Controls.Add(groupBox1);
             Name = "ListarSocio";
             Text = "ListarSocio";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSocios).EndInit();
             ResumeLayout(false);
         }
 
@@ -237,7 +238,7 @@
         private Label label2;
         private Label lbl9;
         private Label lblId;
-        private DataGridView dataGridView1;
+        private DataGridView dgvSocios;
         private Button btnBusca;
     }
 }
