@@ -14,10 +14,19 @@ namespace FitManager.Forms
 {
     public partial class ListarSocio : Form
     {
+        List<Socio> listaSocios = new List<Socio>();
+
         public ListarSocio()
         {
             InitializeComponent();
         }
+
+        private void ListarSocio_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+
 
         private void btnBusca_Click(object sender, EventArgs e)
         {
@@ -39,6 +48,15 @@ namespace FitManager.Forms
             lblPlano.Text = socio.PlanoId.ToString();
         }
 
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
-
