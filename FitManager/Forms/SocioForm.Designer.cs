@@ -28,12 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "SocioForm";
+            btnCriarSocio = new Button();
+            btnEditarSocio = new Button();
+            btnDetalhes = new Button();
+            btnApagarSocio = new Button();
+            SuspendLayout();
+            // 
+            // btnCriarSocio
+            // 
+            btnCriarSocio.Location = new Point(58, 50);
+            btnCriarSocio.Name = "btnCriarSocio";
+            btnCriarSocio.Size = new Size(179, 59);
+            btnCriarSocio.TabIndex = 0;
+            btnCriarSocio.Text = "Criar Socio";
+            btnCriarSocio.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarSocio
+            // 
+            btnEditarSocio.Location = new Point(293, 50);
+            btnEditarSocio.Name = "btnEditarSocio";
+            btnEditarSocio.Size = new Size(179, 59);
+            btnEditarSocio.TabIndex = 1;
+            btnEditarSocio.Text = "Editar Socio";
+            btnEditarSocio.UseVisualStyleBackColor = true;
+            // 
+            // btnDetalhes
+            // 
+            btnDetalhes.Location = new Point(546, 50);
+            btnDetalhes.Name = "btnDetalhes";
+            btnDetalhes.Size = new Size(179, 59);
+            btnDetalhes.TabIndex = 2;
+            btnDetalhes.Text = "Detalhes Socios";
+            btnDetalhes.UseVisualStyleBackColor = true;
+            btnDetalhes.Click += btnDetalhes_Click;
+            // 
+            // btnApagarSocio
+            // 
+            btnApagarSocio.Location = new Point(803, 50);
+            btnApagarSocio.Name = "btnApagarSocio";
+            btnApagarSocio.Size = new Size(179, 59);
+            btnApagarSocio.TabIndex = 3;
+            btnApagarSocio.Text = "Deletar Socio";
+            btnApagarSocio.UseVisualStyleBackColor = true;
+            // 
+            // SocioForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1029, 450);
+            Controls.Add(btnApagarSocio);
+            Controls.Add(btnDetalhes);
+            Controls.Add(btnEditarSocio);
+            Controls.Add(btnCriarSocio);
+            Name = "SocioForm";
+            Text = "SocioForm";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnCriarSocio;
+        private Button btnEditarSocio;
+        private Button btnDetalhes;
+        private Button btnApagarSocio;
     }
 }
