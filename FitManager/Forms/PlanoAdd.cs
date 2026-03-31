@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FitManager.Forms
 {
-    public partial class RegistoFuncionarioForm : Form
+    public partial class PlanoAdd : Form
     {
-        public RegistoFuncionarioForm()
+        public PlanoAdd()
         {
             InitializeComponent();
         }
