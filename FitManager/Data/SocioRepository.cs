@@ -33,10 +33,7 @@ namespace FitManager.Data
         {
             try
             {
-                string? connectionString = ConfigurationManager.AppSettings["ConnectionString"];
-                if (string.IsNullOrEmpty(connectionString)) ;
-
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
                 {
                     if (sqlConnection.State != ConnectionState.Open)
                     {
@@ -62,10 +59,7 @@ namespace FitManager.Data
         {
             try
             {
-                string? connectionString = ConfigurationManager.AppSettings["ConnectionString"];
-                if (string.IsNullOrEmpty(connectionString)) ;
-
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
                 {
                     if (sqlConnection.State != ConnectionState.Open)
                     {
@@ -91,13 +85,7 @@ namespace FitManager.Data
         {
             try
             {
-                string connectionString = ConfigurationManager.AppSettings["ConnectionString"];
-                if (string.IsNullOrEmpty(connectionString))
-                {
-                    throw new Exception("A ConnectionString está vazia no App.config!");
-                }
-
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
                 {
                     sqlConnection.Open();
 
@@ -130,23 +118,17 @@ namespace FitManager.Data
             {
                 throw new Exception("Erro ao buscar sócio: " + ex.Message);
             }
-
             return null;
         }
+
+
 
 
         public static bool RegistarEntrada(int socioId)
         {
             try
             {
-                string connectionString = ConfigurationManager.AppSettings["ConnectionString"];
-
-                if (string.IsNullOrEmpty(connectionString))
-                {
-                    throw new Exception("ConnectionString não encontrada.");
-                }
-
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
                 {
                     sqlConnection.Open();
                     string sql = "INSERT INTO RegistoEntrada (SocioId, DataHora) VALUES (@id, GETDATE())";
@@ -164,5 +146,50 @@ namespace FitManager.Data
                 throw new Exception("Erro ao registar no banco: " + ex.Message);
             }
         }
+
+
+        public static List<RegistoEntrada> ObterUltimosAcessos(int limite = 20)
+        {
+            List<RegistoEntrada> lista = new List<RegistoEntrada>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+                {
+                    string sql = @"SELECT TOP (@limite) R.Id, R.DataHora, S.Nome, S.Nif 
+                           FROM RegistoEntrada R
+                           INNER JOIN Socio S ON R.SocioId = S.Id
+                           ORDER BY R.DataHora DESC";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+                    cmd.Parameters.AddWithValue("@limite", limite);
+
+                    sqlConnection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RegistoEntrada registro = new RegistoEntrada
+                            {
+                                Id = (int)reader["Id"],
+                                DataHora = (DateTime)reader["DataHora"],
+                                SocioQueEntrou = new Socio
+                                {
+                                    Nome = reader["Nome"].ToString(),
+                                    Nif = reader["Nif"].ToString()
+                                }
+                            };
+                            lista.Add(registro);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao carregar histórico: " + ex.Message);
+            }
+            return lista;
+        }
+
     }
 }

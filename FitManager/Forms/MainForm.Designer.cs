@@ -36,6 +36,8 @@
             label1 = new Label();
             label2 = new Label();
             lblTotalEntradas = new Label();
+            dgvAcessos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvAcessos).BeginInit();
             SuspendLayout();
             // 
             // lblUsuarioLogado
@@ -112,11 +114,21 @@
             lblTotalEntradas.TabIndex = 7;
             lblTotalEntradas.Text = "---";
             // 
+            // dgvAcessos
+            // 
+            dgvAcessos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAcessos.Location = new Point(236, 119);
+            dgvAcessos.Name = "dgvAcessos";
+            dgvAcessos.RowHeadersWidth = 51;
+            dgvAcessos.Size = new Size(532, 225);
+            dgvAcessos.TabIndex = 8;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 356);
+            ClientSize = new Size(800, 504);
+            Controls.Add(dgvAcessos);
             Controls.Add(lblTotalEntradas);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -128,6 +140,7 @@
             Name = "MainForm";
             Text = "MainForm";
             Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvAcessos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -142,5 +155,6 @@
         private Label label1;
         private Label label2;
         private Label lblTotalEntradas;
+        private DataGridView dgvAcessos;
     }
 }

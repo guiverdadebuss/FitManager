@@ -31,6 +31,7 @@ namespace FitManager.Forms
                 lblUsuarioLogado.Text = "Bem-vindo, " + char.ToUpper(name[0]) + name.Substring(1);
 
                 CarregarResumoDiario();
+                AtualizarTabelaAcessos();
             }
         }
 
@@ -54,7 +55,7 @@ namespace FitManager.Forms
         private void btnSocios_Click(object sender, EventArgs e)
         {
             SocioForm soc = new SocioForm();
-            soc.StartPosition = FormStartPosition.CenterScreen; 
+            soc.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             soc.ShowDialog();
             this.Show();
@@ -73,10 +74,48 @@ namespace FitManager.Forms
         {
             CheckInForm check = new CheckInForm();
             check.FormClosed += (s, args) => CarregarResumoDiario();
-            check.StartPosition = FormStartPosition.CenterScreen; 
+            check.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             check.ShowDialog();
             this.Show();
+        }
+
+
+        private void AtualizarTabelaAcessos()
+        {
+            try
+            {
+                var acessos = SocioRepository.ObterUltimosAcessos();
+
+                var dadosParaExibir = acessos.Select(a => new {
+                    Hora = a.DataHora.ToString("HH:mm:ss"),
+                    Data = a.DataHora.ToShortDateString(),
+                    Socio = a.SocioQueEntrou?.Nome ?? "N/A",
+                    Documento = a.SocioQueEntrou?.Nif ?? "-"
+                }).ToList();
+
+                dgvAcessos.DataSource = null;
+                dgvAcessos.DataSource = dadosParaExibir;
+
+                FormatarGrade();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar histórico: " + ex.Message);
+            }
+        }
+        private void FormatarGrade()
+        {
+            dgvAcessos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (dgvAcessos.Columns["Socio"] != null)
+                dgvAcessos.Columns["Socio"].FillWeight = 200;
+            dgvAcessos.RowTemplate.Height = 40;
+
+            dgvAcessos.AllowUserToResizeColumns = false;
+            dgvAcessos.AllowUserToResizeRows = false;
+
+            dgvAcessos.Columns["Hora"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvAcessos.Columns["Data"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }
