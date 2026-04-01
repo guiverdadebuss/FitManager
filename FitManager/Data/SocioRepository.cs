@@ -179,7 +179,236 @@ namespace FitManager.Data
         }
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static List<Plano> ObterTodosPlanos()
+        {
+            List<Plano> lista = new List<Plano>();
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string sql = "SELECT * FROM Plano ORDER BY Nome";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new Plano
+                        {
+                            Id = (int)reader["Id"],
+                            Nome = reader["Nome"].ToString(),
+                            PrecoMensal = (decimal)reader["PrecoMensal"],
+                            Descricao = reader["Descricao"].ToString()
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
+
+        // Inserir Novo Plano
+        public static bool InserirPlano(Plano p)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string sql = @"INSERT INTO Plano (Nome, PrecoMensal, Descricao) 
+                       VALUES (@nome, @preco, @desc)";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nome", p.Nome);
+                cmd.Parameters.AddWithValue("@preco", p.PrecoMensal);
+                cmd.Parameters.AddWithValue("@desc", (object)p.Descricao ?? DBNull.Value);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        // Editar Plano Existente
+        public static bool EditarPlano(Plano p)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string sql = @"UPDATE Plano 
+                       SET Nome = @nome, PrecoMensal = @preco, Descricao = @desc 
+                       WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", p.Id);
+                cmd.Parameters.AddWithValue("@nome", p.Nome);
+                cmd.Parameters.AddWithValue("@preco", p.PrecoMensal);
+                cmd.Parameters.AddWithValue("@desc", (object)p.Descricao ?? DBNull.Value);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+
+        public static bool RemoverPlano(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseConnection.GetConnection())
+                {
+                    string sql = "DELETE FROM Plano WHERE Id = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Erro 547 no SQL Server é violação de Constraint (Chave Estrangeira)
+                if (ex.Number == 547)
+                {
+                    throw new Exception("Não é possível remover este plano porque existem sócios inscritos nele.");
+                }
+                throw new Exception("Erro de base de dados: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 
