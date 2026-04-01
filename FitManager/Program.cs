@@ -10,7 +10,7 @@ namespace FitManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (LoginForm fLogin = new LoginForm())
+            using (CriarNovoSocio fLogin = new CriarNovoSocio())
             {
                 if (fLogin.ShowDialog() == DialogResult.OK)
                 {
