@@ -178,6 +178,8 @@ namespace FitManager.Data
             return lista;
         }
 
+
+        
     }
 }
 
