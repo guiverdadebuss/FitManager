@@ -8,6 +8,7 @@ namespace FitManager.Models
 {
     public class Plano
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public decimal PrecoMensal { get; set; }
         public string Descricao { get; set; }

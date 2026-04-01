@@ -63,7 +63,7 @@ namespace FitManager.Forms
 
         private void btnPlanos_Click(object sender, EventArgs e)
         {
-            PlanoAdd plan = new PlanoAdd();
+            GerirPlanosForm plan = new GerirPlanosForm();
             plan.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             plan.ShowDialog();
