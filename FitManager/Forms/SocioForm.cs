@@ -27,6 +27,29 @@ namespace FitManager.Forms
             det.ShowDialog();
             this.Show();
         }
+
+
+        private void btnApagarSocio_Click(object sender, EventArgs e)
+        {
+            using (var f = new EliminarSocio())
+            {
+                // Se no form de eliminar o utilizador concluir com sucesso:
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    // Recarrega a lista / grid de sócios
+                    CarregarTodosSocios(); // ou o método que já usas para atualizar a grelha
+                }
+            }
+        }
+
+        private void CarregarTodosSocios()
+        {
+            // Obter dados do repositório
+            var socios = FitManager.Data.SocioRepository.CarregarTodosSocios();
+
+            
+        }
     }
 }
+
 
