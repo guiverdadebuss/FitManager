@@ -45,7 +45,36 @@ namespace FitManager.Forms
                 txtTelefone.Clear();
                 txtPlanoId.Clear();
             }
-        
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Socio socioEditado = new Socio
+                {
+                    Nome = txtNome.Text,
+                    Telefone = txtTelefone.Text,
+                    PlanoId = int.Parse(txtPlanoId.Text)
+                };
+
+                bool sucesso = SocioRepository.AtualizarSocio(socioEditado);
+
+                if (sucesso)
+                {
+                    MessageBox.Show("Socio Atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma alteração foi feita.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
