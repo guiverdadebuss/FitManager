@@ -219,6 +219,77 @@ namespace FitManager.Data
             return socios;
         }
 
+        public static bool AdicionarSocio(Socio novoSocio)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+                {
+                    // O comando SQL com as "vagas" (@) para os dados
+                    string sql = "INSERT INTO Socio (Nome, Nif, Telefone, EstadoAtivo, PlanoId, DataInscricao) " +
+                                 "VALUES (@nome, @nif, @telefone, @ativo, @planoId, @dataInscricao)";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, sqlConnection))
+                    {
+                        // Preenchendo as vagas com os dados que vieram do objeto novoSocio
+                        cmd.Parameters.AddWithValue("@nome", novoSocio.Nome);
+                        cmd.Parameters.AddWithValue("@nif", novoSocio.Nif);
+                        cmd.Parameters.AddWithValue("@telefone", novoSocio.Telefone ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ativo", novoSocio.EstadoAtivo);
+                        cmd.Parameters.AddWithValue("@planoId", novoSocio.PlanoId);
+                        cmd.Parameters.AddWithValue("@dataInscricao", novoSocio.DataInscricao);
+
+                        sqlConnection.Open(); // Abre a conexão
+                        int linhasAfetadas = cmd.ExecuteNonQuery(); // Executa o INSERT
+
+                        return linhasAfetadas > 0; // Se inseriu mais de 0 linhas, deu certo!
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Se der erro, avisa o que aconteceu
+                throw new Exception("Erro ao salvar sócio: " + ex.Message);
+            }
+        }
+
+        public static bool AtualizarSocio(Socio socio)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+                {
+                    string sql = @"UPDATE Socio
+                                    SET Nome = @nome,
+                                        Nif = @nif,
+                                        Telefone = @telefone,
+                                        EstadoAtivo = @ativo,
+                                        PlanoId = @planoId
+                                    WHERE Id = @id";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, sqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", socio.Id);
+                        cmd.Parameters.AddWithValue("@nome", socio.Nome);
+                        cmd.Parameters.AddWithValue("@nif", socio.Nif);
+                        cmd.Parameters.AddWithValue("@telefone", socio.Telefone);
+                        cmd.Parameters.AddWithValue("@ativo", socio.EstadoAtivo);
+                        cmd.Parameters.AddWithValue("@planoId", socio.PlanoId);
+
+                        sqlConnection.Open();
+
+                        int linhasAfetadas = cmd.ExecuteNonQuery();
+
+                        return linhasAfetadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar sócio na base: " + ex.Message);
+            }
+        }
+
         public static bool EliminarSocio(string termo)
         {
             try
@@ -245,10 +316,102 @@ namespace FitManager.Data
                 throw new Exception("Erro ao eliminar sócio: " + ex.Message);
             }
         }
+
+        public static List<Plano> ObterTodosPlanos()
+        {
+            List<Plano> lista = new List<Plano>();
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string sql = "SELECT * FROM Plano ORDER BY Nome";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new Plano
+                        {
+                            Id = (int)reader["Id"],
+                            Nome = reader["Nome"].ToString(),
+                            PrecoMensal = (decimal)reader["PrecoMensal"],
+                            Descricao = reader["Descricao"].ToString()
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
+
+        // Inserir Novo Plano
+        public static bool InserirPlano(Plano p)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string sql = @"INSERT INTO Plano (Nome, PrecoMensal, Descricao) 
+               VALUES (@nome, @preco, @desc)";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nome", p.Nome);
+                cmd.Parameters.AddWithValue("@preco", p.PrecoMensal);
+                cmd.Parameters.AddWithValue("@desc", (object)p.Descricao ?? DBNull.Value);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        // Editar Plano Existente
+        public static bool EditarPlano(Plano p)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string sql = @"UPDATE Plano 
+               SET Nome = @nome, PrecoMensal = @preco, Descricao = @desc 
+               WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", p.Id);
+                cmd.Parameters.AddWithValue("@nome", p.Nome);
+                cmd.Parameters.AddWithValue("@preco", p.PrecoMensal);
+                cmd.Parameters.AddWithValue("@desc", (object)p.Descricao ?? DBNull.Value);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+
+        public static bool RemoverPlano(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = DatabaseConnection.GetConnection())
+                {
+                    string sql = "DELETE FROM Plano WHERE Id = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Erro 547 no SQL Server é violação de Constraint (Chave Estrangeira)
+                if (ex.Number == 547)
+                {
+                    throw new Exception("Não é possível remover este plano porque existem sócios inscritos nele.");
+                }
+                throw new Exception("Erro de base de dados: " + ex.Message);
+            }
+        }
+    }
     }
 
 
-}
+
+    
 
 
 

@@ -1,160 +1,87 @@
-﻿namespace FitManager.Forms
+namespace FitManager.Forms
 {
     partial class MainForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            lblUsuarioLogado = new Label();
-            btnSocios = new Button();
-            btnCheckIn = new Button();
-            btnPlanos = new Button();
-            lblTotalSocios = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            lblTotalEntradas = new Label();
-            dgvAcessos = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvAcessos).BeginInit();
-            SuspendLayout();
-            // 
-            // lblUsuarioLogado
-            // 
-            lblUsuarioLogado.AutoSize = true;
-            lblUsuarioLogado.Location = new Point(12, 20);
-            lblUsuarioLogado.Name = "lblUsuarioLogado";
-            lblUsuarioLogado.Size = new Size(0, 20);
-            lblUsuarioLogado.TabIndex = 0;
-            // 
-            // btnSocios
-            // 
-            btnSocios.Location = new Point(12, 119);
-            btnSocios.Name = "btnSocios";
-            btnSocios.Size = new Size(190, 71);
-            btnSocios.TabIndex = 1;
-            btnSocios.Text = "Sócios";
-            btnSocios.UseVisualStyleBackColor = true;
-            btnSocios.Click += btnSocios_Click;
-            // 
-            // btnCheckIn
-            // 
-            btnCheckIn.Location = new Point(12, 273);
-            btnCheckIn.Name = "btnCheckIn";
-            btnCheckIn.Size = new Size(190, 71);
-            btnCheckIn.TabIndex = 2;
-            btnCheckIn.Text = "Check-In";
-            btnCheckIn.UseVisualStyleBackColor = true;
-            btnCheckIn.Click += btnCheckIn_Click;
-            // 
-            // btnPlanos
-            // 
-            btnPlanos.Location = new Point(12, 196);
-            btnPlanos.Name = "btnPlanos";
-            btnPlanos.Size = new Size(190, 71);
-            btnPlanos.TabIndex = 3;
-            btnPlanos.Text = "Planos Subscrição";
-            btnPlanos.UseVisualStyleBackColor = true;
-            btnPlanos.Click += btnPlanos_Click;
-            // 
-            // lblTotalSocios
-            // 
-            lblTotalSocios.AutoSize = true;
-            lblTotalSocios.Location = new Point(358, 36);
-            lblTotalSocios.Name = "lblTotalSocios";
-            lblTotalSocios.Size = new Size(27, 20);
-            lblTotalSocios.TabIndex = 4;
-            lblTotalSocios.Text = "---";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(252, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(100, 20);
-            label1.TabIndex = 5;
-            label1.Text = "Socios Ativos:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(474, 36);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 20);
-            label2.TabIndex = 6;
-            label2.Text = "CheckIns: ";
-            // 
-            // lblTotalEntradas
-            // 
-            lblTotalEntradas.AutoSize = true;
-            lblTotalEntradas.Location = new Point(553, 36);
-            lblTotalEntradas.Name = "lblTotalEntradas";
-            lblTotalEntradas.Size = new Size(27, 20);
-            lblTotalEntradas.TabIndex = 7;
-            lblTotalEntradas.Text = "---";
-            // 
-            // dgvAcessos
-            // 
-            dgvAcessos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAcessos.Location = new Point(236, 119);
-            dgvAcessos.Name = "dgvAcessos";
-            dgvAcessos.RowHeadersWidth = 51;
-            dgvAcessos.Size = new Size(532, 225);
-            dgvAcessos.TabIndex = 8;
-            // 
-            // MainForm
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 504);
-            Controls.Add(dgvAcessos);
-            Controls.Add(lblTotalEntradas);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(lblTotalSocios);
-            Controls.Add(btnPlanos);
-            Controls.Add(btnCheckIn);
-            Controls.Add(btnSocios);
-            Controls.Add(lblUsuarioLogado);
-            Name = "MainForm";
-            Text = "MainForm";
-            Load += MainForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvAcessos).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.lblUsuarioLogado  = new System.Windows.Forms.Label();
+            this.lblTotalSocios    = new System.Windows.Forms.Label();
+            this.lblTotalEntradas  = new System.Windows.Forms.Label();
+            this.btnSocios         = new System.Windows.Forms.Button();
+            this.btnPlanos         = new System.Windows.Forms.Button();
+            this.btnCheckIn        = new System.Windows.Forms.Button();
+            this.dgvAcessos        = new System.Windows.Forms.DataGridView();
+            this.SuspendLayout();
+
+            this.lblUsuarioLogado.Name    = "lblUsuarioLogado";
+            this.lblUsuarioLogado.Text    = "";
+            this.lblUsuarioLogado.Visible = false;
+
+            this.lblTotalSocios.Name    = "lblTotalSocios";
+            this.lblTotalSocios.Text    = "---";
+            this.lblTotalSocios.Visible = false;
+
+            this.lblTotalEntradas.Name    = "lblTotalEntradas";
+            this.lblTotalEntradas.Text    = "---";
+            this.lblTotalEntradas.Visible = false;
+
+            this.btnSocios.Name     = "btnSocios";
+            this.btnSocios.Text     = "Sócios";
+            this.btnSocios.Visible  = false;
+            this.btnSocios.Click   += new System.EventHandler(this.btnSocios_Click);
+
+            this.btnPlanos.Name     = "btnPlanos";
+            this.btnPlanos.Text     = "Planos Subscrição";
+            this.btnPlanos.Visible  = false;
+            this.btnPlanos.Click   += new System.EventHandler(this.btnPlanos_Click);
+
+            this.btnCheckIn.Name    = "btnCheckIn";
+            this.btnCheckIn.Text    = "Check-In";
+            this.btnCheckIn.Visible = false;
+            this.btnCheckIn.Click  += new System.EventHandler(this.btnCheckIn_Click);
+
+            this.dgvAcessos.Name    = "dgvAcessos";
+            this.dgvAcessos.Visible = false;
+
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize          = new System.Drawing.Size(1100, 680);
+            this.FormBorderStyle     = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox         = false;
+            this.Name                = "MainForm";
+            this.Text                = "FitManager";
+            this.StartPosition       = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load               += new System.EventHandler(this.MainForm_Load);
+
+            this.Controls.Add(this.lblUsuarioLogado);
+            this.Controls.Add(this.lblTotalSocios);
+            this.Controls.Add(this.lblTotalEntradas);
+            this.Controls.Add(this.btnSocios);
+            this.Controls.Add(this.btnPlanos);
+            this.Controls.Add(this.btnCheckIn);
+            this.Controls.Add(this.dgvAcessos);
+            this.ResumeLayout(false);
         }
 
         #endregion
 
-        private Label lblUsuarioLogado;
-        private Button btnSocios;
-        private Button btnCheckIn;
-        private Button btnPlanos;
-        private Label lblTotalSocios;
-        private Label label1;
-        private Label label2;
-        private Label lblTotalEntradas;
-        private DataGridView dgvAcessos;
+        private System.Windows.Forms.Label         lblUsuarioLogado;
+        private System.Windows.Forms.Label         lblTotalSocios;
+        private System.Windows.Forms.Label         lblTotalEntradas;
+        private System.Windows.Forms.Button        btnSocios;
+        private System.Windows.Forms.Button        btnPlanos;
+        private System.Windows.Forms.Button        btnCheckIn;
+        private System.Windows.Forms.DataGridView  dgvAcessos;
     }
 }
