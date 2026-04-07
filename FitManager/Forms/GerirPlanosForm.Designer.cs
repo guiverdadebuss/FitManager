@@ -30,6 +30,7 @@
         {
             dgvPlanos = new DataGridView();
             groupBox1 = new GroupBox();
+            btnRemover = new Button();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -38,7 +39,7 @@
             txtPreco = new TextBox();
             txtNome = new TextBox();
             btnNovo = new Button();
-            btnRemover = new Button();
+            btnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPlanos).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -49,7 +50,7 @@
             dgvPlanos.Location = new Point(12, 51);
             dgvPlanos.Name = "dgvPlanos";
             dgvPlanos.RowHeadersWidth = 80;
-            dgvPlanos.Size = new Size(911, 232);
+            dgvPlanos.Size = new Size(583, 232);
             dgvPlanos.TabIndex = 0;
             dgvPlanos.CellClick += dgvPlanos_CellClick;
             // 
@@ -66,10 +67,20 @@
             groupBox1.Controls.Add(btnNovo);
             groupBox1.Location = new Point(12, 289);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(911, 232);
+            groupBox1.Size = new Size(583, 232);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalhes do Plano:";
+            // 
+            // btnRemover
+            // 
+            btnRemover.Location = new Point(384, 187);
+            btnRemover.Name = "btnRemover";
+            btnRemover.Size = new Size(183, 39);
+            btnRemover.TabIndex = 8;
+            btnRemover.Text = "Remover";
+            btnRemover.UseVisualStyleBackColor = true;
+            btnRemover.Click += btnRemover_Click;
             // 
             // label3
             // 
@@ -107,9 +118,9 @@
             // 
             // btnGravar
             // 
-            btnGravar.Location = new Point(124, 171);
+            btnGravar.Location = new Point(6, 187);
             btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(153, 37);
+            btnGravar.Size = new Size(183, 39);
             btnGravar.TabIndex = 4;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
@@ -131,29 +142,30 @@
             // 
             // btnNovo
             // 
-            btnNovo.Location = new Point(283, 171);
+            btnNovo.Location = new Point(195, 187);
             btnNovo.Name = "btnNovo";
-            btnNovo.Size = new Size(158, 37);
+            btnNovo.Size = new Size(183, 39);
             btnNovo.TabIndex = 2;
             btnNovo.Text = "Limpar Campos";
             btnNovo.UseVisualStyleBackColor = true;
             btnNovo.Click += btnNovo_Click;
             // 
-            // btnRemover
+            // btnCancelar
             // 
-            btnRemover.Location = new Point(447, 171);
-            btnRemover.Name = "btnRemover";
-            btnRemover.Size = new Size(153, 37);
-            btnRemover.TabIndex = 8;
-            btnRemover.Text = "Remover";
-            btnRemover.UseVisualStyleBackColor = true;
-            btnRemover.Click += btnRemover_Click;
+            btnCancelar.Location = new Point(412, 552);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(183, 39);
+            btnCancelar.TabIndex = 20;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // GerirPlanosForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(935, 536);
+            ClientSize = new Size(607, 603);
+            Controls.Add(btnCancelar);
             Controls.Add(groupBox1);
             Controls.Add(dgvPlanos);
             Name = "GerirPlanosForm";
@@ -180,5 +192,6 @@
         private Label label2;
         private Label label1;
         private Button btnRemover;
+        private Button btnCancelar;
     }
 }

@@ -41,9 +41,9 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(411, 39);
+            btnBuscar.Location = new Point(412, 50);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(95, 42);
+            btnBuscar.Size = new Size(183, 39);
             btnBuscar.TabIndex = 11;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -52,7 +52,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(56, 50);
+            label1.Location = new Point(57, 59);
             label1.Name = "label1";
             label1.Size = new Size(117, 20);
             label1.TabIndex = 10;
@@ -60,7 +60,7 @@
             // 
             // txtBusca
             // 
-            txtBusca.Location = new Point(179, 47);
+            txtBusca.Location = new Point(180, 56);
             txtBusca.Name = "txtBusca";
             txtBusca.Size = new Size(217, 27);
             txtBusca.TabIndex = 9;
@@ -68,7 +68,7 @@
             // lblNomeSocio
             // 
             lblNomeSocio.AutoSize = true;
-            lblNomeSocio.Location = new Point(179, 95);
+            lblNomeSocio.Location = new Point(180, 104);
             lblNomeSocio.Name = "lblNomeSocio";
             lblNomeSocio.Size = new Size(27, 20);
             lblNomeSocio.TabIndex = 12;
@@ -77,7 +77,7 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(179, 145);
+            lblStatus.Location = new Point(180, 154);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(27, 20);
             lblStatus.TabIndex = 13;
@@ -86,9 +86,9 @@
             // btnEliminar
             // 
             btnEliminar.Enabled = false;
-            btnEliminar.Location = new Point(411, 174);
+            btnEliminar.Location = new Point(412, 95);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(95, 42);
+            btnEliminar.Size = new Size(183, 39);
             btnEliminar.TabIndex = 14;
             btnEliminar.Text = "Apagar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(56, 95);
+            label2.Location = new Point(57, 104);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
             label2.TabIndex = 15;
@@ -106,7 +106,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(56, 145);
+            label3.Location = new Point(57, 154);
             label3.Name = "label3";
             label3.Size = new Size(52, 20);
             label3.TabIndex = 16;
@@ -114,7 +114,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(12, 399);
+            btnCancelar.Location = new Point(412, 552);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(183, 39);
             btnCancelar.TabIndex = 17;
@@ -126,7 +126,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 450);
+            ClientSize = new Size(607, 603);
             Controls.Add(btnCancelar);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -137,7 +137,7 @@
             Controls.Add(label1);
             Controls.Add(txtBusca);
             Name = "DeletarSocio";
-            Text = "DeletarSocio";
+            Text = "FitManager - Apagar Socio";
             Load += btnEliminar_Click;
             ResumeLayout(false);
             PerformLayout();

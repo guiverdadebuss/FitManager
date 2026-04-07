@@ -91,10 +91,10 @@ namespace FitManager.Data
                                     Id = (int)reader["Id"],
                                     Nome = reader["Nome"].ToString(),
                                     Nif = reader["Nif"].ToString(),
-                                    Telefone = reader["Telefone"]?.ToString(), // Adicionado
+                                    Telefone = reader["Telefone"]?.ToString(),
                                     EstadoAtivo = Convert.ToBoolean(reader["EstadoAtivo"]),
-                                    PlanoId = (int)reader["PlanoId"], // Adicionado (importante para a ComboBox)
-                                    DataInscricao = (DateTime)reader["DataInscricao"] // Adicionado
+                                    PlanoId = (int)reader["PlanoId"], 
+                                    DataInscricao = (DateTime)reader["DataInscricao"] 
                                 };
                             }
                         }
@@ -440,6 +440,8 @@ namespace FitManager.Data
     }
 }
 
+
+// PADRAO USO CRIAÇÃO QUERYS
 
 //public static bool RegistarEntrada(int socioId)
 //{

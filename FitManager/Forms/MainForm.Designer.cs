@@ -43,14 +43,14 @@
             // lblUsuarioLogado
             // 
             lblUsuarioLogado.AutoSize = true;
-            lblUsuarioLogado.Location = new Point(12, 20);
+            lblUsuarioLogado.Location = new Point(24, 52);
             lblUsuarioLogado.Name = "lblUsuarioLogado";
             lblUsuarioLogado.Size = new Size(0, 20);
             lblUsuarioLogado.TabIndex = 0;
             // 
             // btnSocios
             // 
-            btnSocios.Location = new Point(12, 119);
+            btnSocios.Location = new Point(12, 137);
             btnSocios.Name = "btnSocios";
             btnSocios.Size = new Size(190, 71);
             btnSocios.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             // btnCheckIn
             // 
-            btnCheckIn.Location = new Point(12, 273);
+            btnCheckIn.Location = new Point(404, 137);
             btnCheckIn.Name = "btnCheckIn";
             btnCheckIn.Size = new Size(190, 71);
             btnCheckIn.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             // btnPlanos
             // 
-            btnPlanos.Location = new Point(12, 196);
+            btnPlanos.Location = new Point(208, 137);
             btnPlanos.Name = "btnPlanos";
             btnPlanos.Size = new Size(190, 71);
             btnPlanos.TabIndex = 3;
@@ -81,7 +81,7 @@
             // lblTotalSocios
             // 
             lblTotalSocios.AutoSize = true;
-            lblTotalSocios.Location = new Point(358, 36);
+            lblTotalSocios.Location = new Point(353, 52);
             lblTotalSocios.Name = "lblTotalSocios";
             lblTotalSocios.Size = new Size(27, 20);
             lblTotalSocios.TabIndex = 4;
@@ -90,7 +90,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(252, 36);
+            label1.Location = new Point(247, 52);
             label1.Name = "label1";
             label1.Size = new Size(100, 20);
             label1.TabIndex = 5;
@@ -99,7 +99,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(474, 36);
+            label2.Location = new Point(469, 52);
             label2.Name = "label2";
             label2.Size = new Size(73, 20);
             label2.TabIndex = 6;
@@ -108,7 +108,7 @@
             // lblTotalEntradas
             // 
             lblTotalEntradas.AutoSize = true;
-            lblTotalEntradas.Location = new Point(553, 36);
+            lblTotalEntradas.Location = new Point(548, 52);
             lblTotalEntradas.Name = "lblTotalEntradas";
             lblTotalEntradas.Size = new Size(27, 20);
             lblTotalEntradas.TabIndex = 7;
@@ -117,17 +117,17 @@
             // dgvAcessos
             // 
             dgvAcessos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAcessos.Location = new Point(236, 119);
+            dgvAcessos.Location = new Point(12, 226);
             dgvAcessos.Name = "dgvAcessos";
             dgvAcessos.RowHeadersWidth = 51;
-            dgvAcessos.Size = new Size(540, 225);
+            dgvAcessos.Size = new Size(582, 365);
             dgvAcessos.TabIndex = 8;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(806, 416);
+            ClientSize = new Size(607, 603);
             Controls.Add(dgvAcessos);
             Controls.Add(lblTotalEntradas);
             Controls.Add(label2);

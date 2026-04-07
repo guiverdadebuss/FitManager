@@ -19,6 +19,10 @@ namespace FitManager.Forms
         public MainForm()
         {
             InitializeComponent();
+            FitManager.Services.StyleManager.Aplicar(this);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

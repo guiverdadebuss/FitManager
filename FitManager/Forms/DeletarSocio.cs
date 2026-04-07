@@ -10,7 +10,10 @@ namespace FitManager.Forms
         public DeletarSocio()
         {
             InitializeComponent();
+            FitManager.Services.StyleManager.Aplicar(this);
             btnEliminar.Enabled = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

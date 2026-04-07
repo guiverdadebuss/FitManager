@@ -20,6 +20,9 @@ namespace FitManager.Forms
         public GerirPlanosForm()
         {
             InitializeComponent();
+            FitManager.Services.StyleManager.Aplicar(this);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void GerirPlanosForm_Load(object sender, EventArgs e)
@@ -121,5 +124,11 @@ namespace FitManager.Forms
                 }
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
