@@ -44,6 +44,7 @@
             lbl9 = new Label();
             lblId = new Label();
             dgvSocios = new DataGridView();
+            btnCancelar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSocios).BeginInit();
             SuspendLayout();
@@ -205,17 +206,29 @@
             dgvSocios.RowHeadersWidth = 51;
             dgvSocios.Size = new Size(900, 253);
             dgvSocios.TabIndex = 6;
-            dgvSocios.CellContentClick += dgvSocios_CellContentClick;
+            dgvSocios.CellClick += dgvSocios_CellClick;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(12, 596);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(183, 39);
+            btnCancelar.TabIndex = 18;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // ListarSocio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(924, 585);
+            ClientSize = new Size(924, 647);
+            Controls.Add(btnCancelar);
             Controls.Add(dgvSocios);
             Controls.Add(groupBox1);
             Name = "ListarSocio";
             Text = "ListarSocio";
+            Load += ListarSocio_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSocios).EndInit();
@@ -240,5 +253,6 @@
         private Label lblId;
         private DataGridView dgvSocios;
         private Button btnBusca;
+        private Button btnCancelar;
     }
 }

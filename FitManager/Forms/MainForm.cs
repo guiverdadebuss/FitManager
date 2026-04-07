@@ -1,6 +1,5 @@
 ﻿using FitManager.Data;
 using FitManager.Models;
-using FitManager.Services;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -73,7 +72,10 @@ namespace FitManager.Forms
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
             CheckInForm check = new CheckInForm();
-            check.FormClosed += (s, args) => CarregarResumoDiario();
+            check.FormClosed += (s, args) => {
+                CarregarResumoDiario();    
+                AtualizarTabelaAcessos();
+            };
             check.StartPosition = FormStartPosition.CenterScreen;
             this.Hide();
             check.ShowDialog();
@@ -97,6 +99,12 @@ namespace FitManager.Forms
                 dgvAcessos.DataSource = null;
                 dgvAcessos.DataSource = dadosParaExibir;
 
+                if (dgvAcessos.Columns.Count > 0)
+                {
+                    dgvAcessos.Columns["Socio"].HeaderText = "Sócio";
+                    dgvAcessos.Columns["Documento"].HeaderText = "NIF/Documento";
+                }
+
                 FormatarGrade();
             }
             catch (Exception ex)
@@ -104,6 +112,8 @@ namespace FitManager.Forms
                 MessageBox.Show("Erro ao carregar histórico: " + ex.Message);
             }
         }
+
+
         private void FormatarGrade()
         {
             dgvAcessos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

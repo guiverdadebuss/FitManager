@@ -120,14 +120,14 @@
             dgvAcessos.Location = new Point(236, 119);
             dgvAcessos.Name = "dgvAcessos";
             dgvAcessos.RowHeadersWidth = 51;
-            dgvAcessos.Size = new Size(532, 225);
+            dgvAcessos.Size = new Size(540, 225);
             dgvAcessos.TabIndex = 8;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 504);
+            ClientSize = new Size(806, 416);
             Controls.Add(dgvAcessos);
             Controls.Add(lblTotalEntradas);
             Controls.Add(label2);

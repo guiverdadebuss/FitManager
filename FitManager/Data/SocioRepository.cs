@@ -178,6 +178,54 @@ namespace FitManager.Data
             return lista;
         }
 
+
+
+
+        public static List<Socio> CarregarTodosSocios()
+        {
+            List<Socio> socios = new List<Socio>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+                {
+                    if (sqlConnection.State != ConnectionState.Open)
+                        sqlConnection.Open();
+
+                    string sql = "SELECT * FROM Socio";
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Socio s = new Socio
+                            {
+                                Id = (int)reader["Id"],
+                                Nome = reader["Nome"].ToString(),
+                                Nif = reader["Nif"].ToString(),
+                                Telefone = reader["Telefone"].ToString(),
+                                DataInscricao = (DateTime)reader["DataInscricao"],
+                                PlanoId = (int)reader["PlanoId"],
+                                EstadoAtivo = (bool)reader["EstadoAtivo"]
+                            };
+                            socios.Add(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar sócios: " + ex.Message,
+                                "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return socios;
+        }
+
+
+
+
         public static bool AdicionarSocio(Socio novoSocio)
         {
             try
@@ -212,6 +260,9 @@ namespace FitManager.Data
             }
         }
 
+
+
+
         public static bool AtualizarSocio(Socio socio)
         {
             try
@@ -219,12 +270,12 @@ namespace FitManager.Data
                 using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
                 {
                     string sql = @"UPDATE Socio
-                                    SET Nome = @nome,
-                                        Nif = @nif,
-                                        Telefone = @telefone,
-                                        EstadoAtivo = @ativo,
-                                        PlanoId = @planoId
-                                    WHERE Id = @id";
+                            SET Nome = @nome,
+                                Nif = @nif,
+                                Telefone = @telefone,
+                                EstadoAtivo = @ativo,
+                                PlanoId = @planoId
+                            WHERE Id = @id";
 
                     using (SqlCommand cmd = new SqlCommand(sql, sqlConnection))
                     {
@@ -251,129 +302,32 @@ namespace FitManager.Data
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public static bool EliminarSocio(string termo)
+        {
+            try
+            {
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
+                {
+                    sqlConnection.Open();
+
+                    string sql = @"DELETE FROM Socio 
+                                 WHERE Id = TRY_CAST(@termo AS INT)
+                                 OR Nif = @termo";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, sqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@termo", termo);
+
+                        int linhas = cmd.ExecuteNonQuery();
+                        return linhas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao eliminar sócio: " + ex.Message);
+            }
+        }
 
 
 
@@ -381,11 +335,11 @@ namespace FitManager.Data
         public static List<Plano> ObterTodosPlanos()
         {
             List<Plano> lista = new List<Plano>();
-            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
             {
                 string sql = "SELECT * FROM Plano ORDER BY Nome";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+                sqlConnection.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -406,17 +360,17 @@ namespace FitManager.Data
         // Inserir Novo Plano
         public static bool InserirPlano(Plano p)
         {
-            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
             {
                 string sql = @"INSERT INTO Plano (Nome, PrecoMensal, Descricao) 
                        VALUES (@nome, @preco, @desc)";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, sqlConnection);
                 cmd.Parameters.AddWithValue("@nome", p.Nome);
                 cmd.Parameters.AddWithValue("@preco", p.PrecoMensal);
                 cmd.Parameters.AddWithValue("@desc", (object)p.Descricao ?? DBNull.Value);
 
-                conn.Open();
+                sqlConnection.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
@@ -424,19 +378,19 @@ namespace FitManager.Data
         // Editar Plano Existente
         public static bool EditarPlano(Plano p)
         {
-            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
             {
                 string sql = @"UPDATE Plano 
                        SET Nome = @nome, PrecoMensal = @preco, Descricao = @desc 
                        WHERE Id = @id";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, sqlConnection);
                 cmd.Parameters.AddWithValue("@id", p.Id);
                 cmd.Parameters.AddWithValue("@nome", p.Nome);
                 cmd.Parameters.AddWithValue("@preco", p.PrecoMensal);
                 cmd.Parameters.AddWithValue("@desc", (object)p.Descricao ?? DBNull.Value);
 
-                conn.Open();
+                sqlConnection.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
@@ -446,14 +400,14 @@ namespace FitManager.Data
         {
             try
             {
-                using (SqlConnection conn = DatabaseConnection.GetConnection())
+                using (SqlConnection sqlConnection = DatabaseConnection.GetConnection())
                 {
                     string sql = "DELETE FROM Plano WHERE Id = @id";
 
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnection);
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    conn.Open();
+                    sqlConnection.Open();
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }

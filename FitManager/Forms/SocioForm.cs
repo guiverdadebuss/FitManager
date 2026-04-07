@@ -27,6 +27,33 @@ namespace FitManager.Forms
             det.ShowDialog();
             this.Show();
         }
+
+        private void btnEditarSocio_Click(object sender, EventArgs e)
+        {
+            EditarSocio edit = new EditarSocio();
+            edit.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            edit.ShowDialog();
+            this.Show();
+        }
+
+        private void btnCriarSocio_Click(object sender, EventArgs e)
+        {
+            NovoSocio novo = new NovoSocio();
+            novo.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            novo.ShowDialog();
+            this.Show();
+        }
+
+        private void btnApagarSocio_Click(object sender, EventArgs e)
+        {
+            DeletarSocio del = new DeletarSocio();
+            del.StartPosition = FormStartPosition.CenterScreen;
+            this.Hide();
+            del.ShowDialog();
+            this.Show();
+        }
     }
 }
 

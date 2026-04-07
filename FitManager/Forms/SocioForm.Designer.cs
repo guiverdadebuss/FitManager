@@ -38,25 +38,27 @@
             // 
             btnCriarSocio.Location = new Point(58, 50);
             btnCriarSocio.Name = "btnCriarSocio";
-            btnCriarSocio.Size = new Size(179, 59);
+            btnCriarSocio.Size = new Size(315, 59);
             btnCriarSocio.TabIndex = 0;
             btnCriarSocio.Text = "Criar Socio";
             btnCriarSocio.UseVisualStyleBackColor = true;
+            btnCriarSocio.Click += btnCriarSocio_Click;
             // 
             // btnEditarSocio
             // 
-            btnEditarSocio.Location = new Point(293, 50);
+            btnEditarSocio.Location = new Point(58, 146);
             btnEditarSocio.Name = "btnEditarSocio";
-            btnEditarSocio.Size = new Size(179, 59);
+            btnEditarSocio.Size = new Size(315, 59);
             btnEditarSocio.TabIndex = 1;
             btnEditarSocio.Text = "Editar Socio";
             btnEditarSocio.UseVisualStyleBackColor = true;
+            btnEditarSocio.Click += btnEditarSocio_Click;
             // 
             // btnDetalhes
             // 
-            btnDetalhes.Location = new Point(546, 50);
+            btnDetalhes.Location = new Point(58, 246);
             btnDetalhes.Name = "btnDetalhes";
-            btnDetalhes.Size = new Size(179, 59);
+            btnDetalhes.Size = new Size(315, 59);
             btnDetalhes.TabIndex = 2;
             btnDetalhes.Text = "Detalhes Socios";
             btnDetalhes.UseVisualStyleBackColor = true;
@@ -64,18 +66,19 @@
             // 
             // btnApagarSocio
             // 
-            btnApagarSocio.Location = new Point(803, 50);
+            btnApagarSocio.Location = new Point(58, 338);
             btnApagarSocio.Name = "btnApagarSocio";
-            btnApagarSocio.Size = new Size(179, 59);
+            btnApagarSocio.Size = new Size(315, 59);
             btnApagarSocio.TabIndex = 3;
             btnApagarSocio.Text = "Deletar Socio";
             btnApagarSocio.UseVisualStyleBackColor = true;
+            btnApagarSocio.Click += btnApagarSocio_Click;
             // 
             // SocioForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1029, 450);
+            ClientSize = new Size(442, 450);
             Controls.Add(btnApagarSocio);
             Controls.Add(btnDetalhes);
             Controls.Add(btnEditarSocio);
