@@ -42,21 +42,21 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(149, 34);
+            txtNome.Location = new Point(130, 33);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(261, 27);
             txtNome.TabIndex = 0;
             // 
             // txtNif
             // 
-            txtNif.Location = new Point(149, 82);
+            txtNif.Location = new Point(130, 81);
             txtNif.Name = "txtNif";
             txtNif.Size = new Size(261, 27);
             txtNif.TabIndex = 1;
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(149, 134);
+            txtTelefone.Location = new Point(130, 133);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(261, 27);
             txtTelefone.TabIndex = 2;
@@ -64,14 +64,14 @@
             // cboPlano
             // 
             cboPlano.FormattingEnabled = true;
-            cboPlano.Location = new Point(149, 184);
+            cboPlano.Location = new Point(130, 183);
             cboPlano.Name = "cboPlano";
             cboPlano.Size = new Size(261, 28);
             cboPlano.TabIndex = 3;
             // 
             // btnGravar
             // 
-            btnGravar.Location = new Point(149, 235);
+            btnGravar.Location = new Point(130, 234);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(261, 39);
             btnGravar.TabIndex = 4;
@@ -82,7 +82,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(51, 37);
+            label1.Location = new Point(32, 36);
             label1.Name = "label1";
             label1.Size = new Size(53, 20);
             label1.TabIndex = 5;
@@ -91,7 +91,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(51, 89);
+            label2.Location = new Point(32, 88);
             label2.Name = "label2";
             label2.Size = new Size(32, 20);
             label2.TabIndex = 6;
@@ -100,7 +100,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(51, 137);
+            label3.Location = new Point(32, 136);
             label3.Name = "label3";
             label3.Size = new Size(69, 20);
             label3.TabIndex = 7;
@@ -109,7 +109,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(51, 187);
+            label4.Location = new Point(32, 186);
             label4.Name = "label4";
             label4.Size = new Size(49, 20);
             label4.TabIndex = 8;
@@ -117,7 +117,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(12, 399);
+            btnCancelar.Location = new Point(412, 552);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(183, 39);
             btnCancelar.TabIndex = 9;
@@ -129,7 +129,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(508, 450);
+            ClientSize = new Size(607, 603);
             Controls.Add(btnCancelar);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -141,7 +141,7 @@
             Controls.Add(txtNif);
             Controls.Add(txtNome);
             Name = "NovoSocio";
-            Text = "NovoSocio";
+            Text = "FitManager - Criar Socio";
             Load += NovoSocio_Load;
             ResumeLayout(false);
             PerformLayout();

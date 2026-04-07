@@ -8,6 +8,9 @@ namespace FitManager.Forms
         public ListarSocio()
         {
             InitializeComponent();
+            FitManager.Services.StyleManager.Aplicar(this);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void ListarSocio_Load(object sender, EventArgs e)

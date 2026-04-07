@@ -18,6 +18,9 @@ namespace FitManager.Forms
         public EditarSocio()
         {
             InitializeComponent();
+            FitManager.Services.StyleManager.Aplicar(this);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -37,6 +40,7 @@ namespace FitManager.Forms
                 txtNome.Text = socioEncontrado.Nome;
                 txtTelefone.Text = socioEncontrado.Telefone;
                 txtPlanoId.Text = socioEncontrado.PlanoId.ToString();
+                chkAtivo.Checked = socioEncontrado.EstadoAtivo;
 
                 MessageBox.Show("Sócio encontrado!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -61,6 +65,7 @@ namespace FitManager.Forms
             {
                 socioEncontrado.Nome = txtNome.Text.Trim();
                 socioEncontrado.Telefone = txtTelefone.Text.Trim();
+                socioEncontrado.EstadoAtivo = chkAtivo.Checked;
 
                 if (int.TryParse(txtPlanoId.Text, out int novoPlanoId))
                 {
